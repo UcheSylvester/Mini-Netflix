@@ -1,1 +1,19 @@
-<p>movie-details works!</p>
+<div class="container">
+  <img
+    src="https://image.tmdb.org/t/p/w500/{{ movie?.poster_path }}"
+    alt="movie image"
+  />
+
+  <h2>
+    <a [href]="movie?.homepage" target="blank">{{ movie?.title }}</a>
+  </h2>
+
+  <a href="#">Add To Favorites</a>
+
+  <div class="row">
+    <span>released on {{ movie?.release_date }}</span>
+    <span>{{ movie?.vote_count }} votes</span>
+  </div>
+
+  <p>{{ movie?.overview }}</p>
+</div>

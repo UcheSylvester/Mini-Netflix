@@ -14,9 +14,4 @@ export class MovieThumbnailComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {}
-
-  getDetails() {
-    // console.log(this.movie);
-    this.router.navigate(["/movies", this.movie.id]);
-  }
 }
