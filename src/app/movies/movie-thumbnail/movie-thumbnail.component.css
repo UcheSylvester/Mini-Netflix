@@ -1,0 +1,15 @@
+div.card {
+  margin: 1em;
+  height: 24em;
+}
+
+img.card-img-top {
+  height: 200px;
+}
+
+div.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

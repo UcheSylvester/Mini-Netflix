@@ -1,1 +1,6 @@
-<p>movies works!</p>
+<div class="row">
+  <div *ngFor="let movie of movies">
+    <app-movie-thumbnail [recievedMovie]="movie"></app-movie-thumbnail>
+  </div>
+  <!-- <app-movie-thumbnail></app-movie-thumbnail> -->
+</div>

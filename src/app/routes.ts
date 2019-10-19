@@ -4,10 +4,12 @@ import { MoviesComponent } from "./movies/movies.component";
 import { FavoritesComponent } from "./movies/favorites/favorites.component";
 import { MovieDetailsComponent } from "./movies/movie-details/movie-details.component";
 import { ErrorsComponent } from "./errors/errors.component";
+import { LoginComponent } from "./login/login.component";
 
 export const appRoutes: Routes = [
   { path: "movies", component: MoviesComponent },
   { path: "favorites", component: FavoritesComponent },
+  { path: "login", component: LoginComponent },
   { path: "404", component: ErrorsComponent },
   { path: "movies/:id", component: MovieDetailsComponent },
   { path: "", redirectTo: "movies", pathMatch: "full" },

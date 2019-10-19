@@ -1,1 +1,16 @@
-<p>movie-thumbnail works!</p>
+<div class="card" style="width: 18rem;">
+  <img
+    class="card-img-top"
+    src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}"
+    alt="movie image"
+  />
+  <div class="card-body">
+    <h5 class="card-title text-center">{{ movie.title }}</h5>
+    <p class="card-text">
+      {{ movie.release_date }}
+    </p>
+    <a class="text-center" class="btn btn-primary" (click)="getDetails()"
+      >Veiw Details</a
+    >
+  </div>
+</div>
