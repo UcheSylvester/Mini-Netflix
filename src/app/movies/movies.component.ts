@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { MoviesService } from "../shared/movies.service";
 import { IMovie, IResult } from "../shared/movie.model";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-movies",
@@ -9,16 +10,31 @@ import { IMovie, IResult } from "../shared/movie.model";
 })
 export class MoviesComponent implements OnInit {
   movies: IMovie[];
+  searchTerm: string;
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit() {
-    this.moviesService.getMovies().subscribe(
-      (data: IResult) => {
-        // find out why the modal isn't working
-        this.movies = data.results;
-        // console.log(this.movies);
-      },
-      err => console.log(err)
-    );
+    this.moviesService
+      .getMovies()
+      .subscribe(
+        (data: IResult) => (this.movies = data.results),
+        err => console.log(err)
+      );
+    // this.movies = this.moviesService.movies;
+    // console.log(this.movies);
+  }
+
+  searchMovies(form: NgForm) {
+    // console.log(typeof form.controls.searchInput.value);
+    this.searchTerm = form.controls.searchInput.value;
+
+    this.moviesService
+      .searchMovies(this.searchTerm)
+      .subscribe(
+        (data: IResult) => (this.movies = data.results),
+        err => console.log(err)
+      );
+
+    this.searchTerm = "";
   }
 }

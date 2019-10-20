@@ -23,7 +23,7 @@ export class MovieDetailsComponent implements OnInit {
     this.movieService.getMovie(+id).subscribe(
       (data: IMovie) => {
         this.movie = data;
-        console.log(this.movie);
+        // console.log(this.movie);
       },
       err => console.log(err)
     );

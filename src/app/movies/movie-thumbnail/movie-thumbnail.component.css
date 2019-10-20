@@ -13,3 +13,8 @@ div.card-body {
   justify-content: center;
   align-items: center;
 }
+
+i.fa-heart {
+  color: red;
+  background-color: red;
+}

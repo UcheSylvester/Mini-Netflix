@@ -4,11 +4,23 @@
     src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}"
     alt="movie image"
   />
+  <!-- <i class="glyphicon glyphicon-fire"></i> -->
+
+  <a
+    *ngIf="!movie.favorite"
+    class="text-center"
+    (click)="addToFavorite(movie)"
+    style="cursor: pointer;"
+    >Add To Favorite</a
+  >
+
   <div class="card-body">
     <h5 class="card-title text-center">{{ movie.title }}</h5>
     <p class="card-text">
       {{ movie.release_date }}
     </p>
+
+    <!-- <p>{{ message }}</p> -->
 
     <a
       class="text-center"
