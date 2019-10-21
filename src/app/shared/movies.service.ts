@@ -6,13 +6,13 @@ import { IMovie, IResult } from "./movie.model";
 
 @Injectable()
 export class MoviesService {
-  private messageSource = new Subject<IMovie>();
   private myFavouriteMovies: IMovie[] = [];
 
-  // currentMessage = this.messageSource.asObservable();
-
-  // apiKey: string = "f1e07a6b0a80aa678e23a81b8077fbbc";
   constructor(private http: HttpClient) {}
+
+  saveFavoriteMovies(movies: IMovie) {
+    localStorage.setItem('favoriteMovies', JSON.stringify(movies))
+  }
 
   addToMyFavourite(movie: IMovie) {
     this.myFavouriteMovies.push(movie);

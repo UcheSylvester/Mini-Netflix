@@ -1,5 +1,7 @@
-<div *ngIf="!movies && !movies.lenght">You have no favorite movies</div>
+<div class="no_movies" *ngIf="!movies">You have no favorite movies</div>
 
-<div class="row" *ngFor="let movie of movies">
-  <app-movie-thumbnail [recievedMovie]="movie"></app-movie-thumbnail>
+<div class="row">
+  <div *ngFor="let movie of movies">
+    <app-movie-thumbnail [recievedMovie]="movie"></app-movie-thumbnail>
+  </div>
 </div>

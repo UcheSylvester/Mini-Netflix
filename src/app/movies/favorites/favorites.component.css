@@ -1,0 +1,12 @@
+div.no_movies {
+  color: white;
+  font-size: 2em;
+  text-align: center;
+  margin-top: 3em;
+}
+
+div.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

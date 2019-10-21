@@ -1,9 +1,7 @@
-import { Router } from "@angular/router";
-
 import { Component, OnInit, Input } from "@angular/core";
 
 import { IMovie } from "src/app/shared/movie.model";
-import { MoviesService } from "src/app/shared/movies.service";
+import { FavoriteService } from "src/app/shared/favorite.service";
 
 @Component({
   selector: "app-movie-thumbnail",
@@ -13,17 +11,21 @@ import { MoviesService } from "src/app/shared/movies.service";
 export class MovieThumbnailComponent implements OnInit {
   @Input("recievedMovie") movie: IMovie;
 
-  constructor(private router: Router, private movieService: MoviesService) {}
+  constructor(private favoriteService: FavoriteService) {}
 
-  addToFavorite(movie: IMovie) {
-    this.movieService.addToMyFavourite(movie);
-  }
+  // addToFavorite(movie: IMovie) {
+  //   this.movieService.addToMyFavourite(movie);
+  // }
 
   ngOnInit() {
     this.movie.favorite = false;
-    // console.log(this.movie);
-    // this.movieService.currentMessage.subscribe(
-    //   message => (this.message = message)
-    // );
+  }
+
+  addToFavorite(movie: IMovie) {
+    if (!movie.favorite) {
+      movie.favorite = true;
+      this.favoriteService.addToFavoriteMovies(movie);
+      console.log("mt", movie.favorite);
+    }
   }
 }
