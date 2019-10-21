@@ -12,9 +12,12 @@ import { MoviesService } from "src/app/shared/movies.service";
 })
 export class MovieThumbnailComponent implements OnInit {
   @Input("recievedMovie") movie: IMovie;
-  // message: string;
 
   constructor(private router: Router, private movieService: MoviesService) {}
+
+  addToFavorite(movie: IMovie) {
+    this.movieService.addToMyFavourite(movie);
+  }
 
   ngOnInit() {
     this.movie.favorite = false;
@@ -22,12 +25,5 @@ export class MovieThumbnailComponent implements OnInit {
     // this.movieService.currentMessage.subscribe(
     //   message => (this.message = message)
     // );
-  }
-
-  addToFavorite(movie: IMovie) {
-    console.log(movie);
-    if (!movie.favorite) {
-      this.movie.favorite = true;
-    }
   }
 }
