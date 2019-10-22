@@ -6,7 +6,7 @@ import { IMovie, IResult } from "./movie.model";
 
 @Injectable()
 export class MoviesService {
-  private myFavouriteMovies: IMovie[] = [];
+  // private myFavouriteMovies: IMovie[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -38,10 +38,8 @@ export class MoviesService {
     return JSON.parse(sessionStorage.getItem("movies"));
   }
 
-  getMovie(id: number): Observable<IMovie> {
-    return this.http.get<IMovie>(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=f1e07a6b0a80aa678e23a81b8077fbbc`
-    );
+  getMovie(id: number): IMovie {
+    return this.getMoviesFromStorage().find((movie: IMovie) => movie.id === id);
   }
 
   searchMovies(searchTerm: string): Observable<IResult> {
@@ -49,5 +47,11 @@ export class MoviesService {
     return this.http.get<IResult>(
       `https://api.themoviedb.org/3/search/movie?api_key=f1e07a6b0a80aa678e23a81b8077fbbc&query=${searchTerm}`
     );
+  }
+
+  saveSearchResults(results: IMovie[]) {
+    if (window.sessionStorage) {
+      sessionStorage.setItem("searchResults", JSON.stringify(results));
+    }
   }
 }

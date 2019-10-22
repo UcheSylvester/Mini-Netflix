@@ -20,12 +20,7 @@ export class MovieDetailsComponent implements OnInit {
     let id: number;
     this.route.params.subscribe((params: Params) => (id = params["id"]));
 
-    this.movieService.getMovie(+id).subscribe(
-      (data: IMovie) => {
-        this.movie = data;
-        // console.log(this.movie);
-      },
-      err => console.log(err)
-    );
+    this.movie = this.movieService.getMovie(+id);
+    console.log(this.movie);
   }
 }
