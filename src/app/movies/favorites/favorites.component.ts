@@ -16,6 +16,6 @@ export class FavoritesComponent implements OnInit {
   ngOnInit() {
     this.movies = this.favoriteService.getFavoriteMovies();
     // console.log("fav", this.movies);
-    this.movies.forEach(movie => console.log(movie.favorite));
+    // this.movies.forEach(movie => console.log(movie.favorite));
   }
 }

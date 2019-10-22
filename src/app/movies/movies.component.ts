@@ -9,17 +9,22 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./movies.component.css"]
 })
 export class MoviesComponent implements OnInit {
-  movies: IMovie[];
+  movies: IMovie[] = [];
   searchTerm: string;
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit() {
-    this.moviesService
-      .getMovies()
-      .subscribe(
-        (data: IResult) => (this.movies = data.results),
-        err => console.log(err)
-      );
+    this.moviesService.fetchMovies().subscribe(
+      (data: IResult) => {
+        this.movies = data.results;
+        this.movies.forEach((movie: IMovie) => (movie.favorite = false));
+
+        this.moviesService.saveMovies(this.movies);
+        this.movies = this.moviesService.getMoviesFromStorage();
+        // console.log("movies", this.movies);
+      },
+      err => console.log(err)
+    );
     // this.movies = this.moviesService.movies;
     // console.log(this.movies);
   }

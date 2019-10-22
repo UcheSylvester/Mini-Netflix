@@ -8,7 +8,7 @@ export class FavoriteService {
   favoriteMovies: IMovie[] = [];
 
   saveFavoriteMovies(favoriteMovies: IMovie[]) {
-    localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies));
+    sessionStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies));
   }
 
   addToFavoriteMovies(movies: IMovie) {
@@ -18,6 +18,6 @@ export class FavoriteService {
 
   getFavoriteMovies(): IMovie[] {
     // this.favoriteMovies = JSON.parse(localStorage.getItem("favoriteMovies"));
-    return JSON.parse(localStorage.getItem("favoriteMovies"));
+    return JSON.parse(sessionStorage.getItem("favoriteMovies"));
   }
 }

@@ -6,8 +6,20 @@
   />
   <!-- <i class="glyphicon glyphicon-fire"></i> -->
 
-  <a class="text-center" (click)="addToFavorite(movie)" style="cursor: pointer;"
+  <a
+    *ngIf="!movie.favorite"
+    class="text-center"
+    (click)="addToFavorite(movie)"
+    style="cursor: pointer;"
     >Add To Favorite</a
+  >
+
+  <a
+    class="text-center"
+    style="cursor: pointer"
+    *ngIf="movie.favorite"
+    (click)="removeFromFavorite(movie.id)"
+    >Remove from Favorite</a
   >
 
   <div class="card-body">

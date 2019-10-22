@@ -10,24 +10,32 @@ export class MoviesService {
 
   constructor(private http: HttpClient) {}
 
-  saveFavoriteMovies(movies: IMovie) {
-    localStorage.setItem('favoriteMovies', JSON.stringify(movies))
-  }
+  // saveFavoriteMovies(movies: IMovie) {
+  //   localStorage.setItem('favoriteMovies', JSON.stringify(movies))
+  // }
 
-  addToMyFavourite(movie: IMovie) {
-    this.myFavouriteMovies.push(movie);
-  }
+  // addToMyFavourite(movie: IMovie) {
+  //   this.myFavouriteMovies.push(movie);
+  // }
 
-  getMyFavourites(): IMovie[] {
-    return this.myFavouriteMovies;
-  }
+  // getMyFavourites(): IMovie[] {
+  //   return this.myFavouriteMovies;
+  // }
 
-  removeFromFavourite(index: number): void {}
+  // removeFromFavourite(index: number): void {}
 
-  getMovies(): Observable<IResult> {
+  fetchMovies(): Observable<IResult> {
     return this.http.get<IResult>(
       `https://api.themoviedb.org/3/discover/movie?api_key=f1e07a6b0a80aa678e23a81b8077fbbc&sort_by=popularity.desc`
     );
+  }
+
+  saveMovies(movies: IMovie[]) {
+    sessionStorage.setItem("movies", JSON.stringify(movies));
+  }
+
+  getMoviesFromStorage(): IMovie[] {
+    return JSON.parse(sessionStorage.getItem("movies"));
   }
 
   getMovie(id: number): Observable<IMovie> {

@@ -18,7 +18,8 @@ export class MovieThumbnailComponent implements OnInit {
   // }
 
   ngOnInit() {
-    this.movie.favorite = false;
+    // this.movie.favorite = false;
+    console.log(this.movie);
   }
 
   addToFavorite(movie: IMovie) {

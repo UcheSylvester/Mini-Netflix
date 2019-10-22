@@ -10,3 +10,13 @@ div.row {
   justify-content: center;
   align-items: center;
 }
+
+div a {
+  font-size: 0.8em;
+  color: rgb(161, 62, 62);
+  /* text-decoration: none; */
+}
+
+div a:hover {
+  text-decoration: underline;
+}
